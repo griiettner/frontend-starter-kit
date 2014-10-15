@@ -1,0 +1,56 @@
+@import (inline) "fonts/glyphicons-halflings-regular.css";
+
+@var: #000000;
+
+body {
+	font-size: 1.6rem;
+}
+
+div {
+	color: @var;
+	transform: scale(1, 1);
+}
+
+.another {
+	color: #fff;
+	background-color: #000;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+.a {
+  font-size: 2rem;
+  width: calc(100% - 50px);
+}
+
+.blur {
+  filter: blur(4px);
+}
+
+.element::after {
+  content: '';
+}
+
+.desaturate {
+  opacity: .5;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(red, blue);
+}
+
+@media (min-width: 36em) {
+  .a {
+    color: red;
+  }
+}
+
+@media (min-width: 36em) {
+  .b {
+    color: blue;
+  }
+}

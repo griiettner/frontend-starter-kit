@@ -1,0 +1,20 @@
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible"          content="IE=edge,chrome=1">
+        <title>{% if title %}{{ title }} - {% endif %}{{ config.app_name }}</title>
+        <meta name="description"                    content="{{ description }}">
+        <meta name="viewport"                       content="width=device-width, initial-scale=1">
+        {% if config.webapp %}<meta name="mobile-web-app-capable"         content="yes">{% endif %}
+{% include config.template_path + "modules/header_og_tags.htm" %}
+{% include config.template_path + "modules/header_twitter_tags.htm" %}
+{% include config.template_path + "modules/header_favicons_tags.htm" %}
+
+        <link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="{{ config.base_path }}css/style.css" rel="stylesheet">
+
+        <script src="//ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js"></script>
+
+        <!--[if lt IE 9]>
+            <script src="//origin.jsdelivr.net/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="//origin.jsdelivr.net/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->

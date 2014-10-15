@@ -1,0 +1,22 @@
+{
+    "pathSrc" : "src/",
+    "pathDev" : "dev/",
+    "pathProd" : "dist/",
+    "favicons": {
+        "source": "src/img/favicon.png",
+        "dest": "src/img/favicons",
+        "android": true,
+        "apple": true,
+        "coast": true,
+        "favicons": true,
+        "firefox": false,
+        "windows": true,
+        "html": null,
+        "background": "#2b5797",
+        "tileBlackWhite": false,
+        "manifest": null,
+        "trueColor": false,
+        "logging": true,
+        "callback": null
+    }
+}

@@ -1,0 +1,51 @@
+{% if config.favicons.enable  %}
+        {% if config.favicons.windows.enable %}<!-- The default name displayed with the pinned sites tile on Windows -->
+        <meta name="application-name"                content="{{ config.app_name }}">
+        <!-- Provides additional tooltip text that appears when you hover over the Pinned site shortcut -->
+        <meta name="msapplication-tooltip"           content="{{ config.app_name }}">
+        <!-- Tile background color for Windows 8 -->
+        <meta name="msapplication-TileColor"         content="#2b5797">
+        <!-- upported as of IE11 and applies to tiles pinned to the Windows Start screen -->
+        <meta name="msapplication-square70x70logo"   content="{{ config.base_url }}{{ config.favicons.path }}mstile-70x70.png">
+        <meta name="msapplication-TileImage"         content="{{ config.base_url }}{{ config.favicons.path }}mstile-144x144.png">
+        <meta name="msapplication-square150x150logo" content="{{ config.base_url }}{{ config.favicons.path }}mstile-150x150.png">
+        <meta name="msapplication-wide310x150logo"   content="{{ config.base_url }}{{ config.favicons.path }}mstile-310x150.png">
+        <meta name="msapplication-square310x310logo" content="{{ config.base_url }}{{ config.favicons.path }}mstile-310x310.png">
+        <!-- Identifies an XMLfile that contains IE configuration schema that defines live tile customizations -->
+        <meta name="msapplication-config"            content="{{ config.base_url }}{{ config.favicons.path }}browserconfig.xml">{% endif %}
+        <!-- Used by IE, and also by some other browsers if we are not careful -->
+        <link rel="shortcut icon"                    href="{{ config.base_url }}{{ config.favicons.path }}favicon.ico">
+        {% if config.favicons.aplle.enable %}<!-- iPhone and iPad icons on device home screen  -->
+        <link rel="apple-touch-icon" sizes="57x57"   href="{{ config.base_url }}{{ config.favicons.path }}apple-touch-icon-57x57.png">
+        <!-- Same as apple-touch-icon-57x57.png, for non-retina iPhone with iOS7 -->
+        <link rel="apple-touch-icon" sizes="60x60"   href="{{ config.base_url }}{{ config.favicons.path }}apple-touch-icon-60x60.png">
+        <!-- Same as apple-touch-icon-57x57.png, for non-retina iPad with iOS6 or prior -->
+        <link rel="apple-touch-icon" sizes="72x72"   href="{{ config.base_url }}{{ config.favicons.path }}apple-touch-icon-72x72.png">
+        <!-- Same as apple-touch-icon-57x57.png, for non-retina iPad with iOS7 -->
+        <link rel="apple-touch-icon" sizes="76x76"   href="{{ config.base_url }}{{ config.favicons.path }}apple-touch-icon-76x76.png">
+        <!-- Same as apple-touch-icon-57x57.png, for retina iPhone with iOS6 or prior -->
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ config.base_url }}{{ config.favicons.path }}apple-touch-icon-114x114.png">
+        <!-- Same as apple-touch-icon-57x57.png, for retina iPhone with iOS7 -->
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ config.base_url }}{{ config.favicons.path }}apple-touch-icon-120x120.png">
+        <!-- Same as apple-touch-icon-57x57.png, for retina iPad with iOS6 or prior -->
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ config.base_url }}{{ config.favicons.path }}apple-touch-icon-144x144.png">
+        <!-- Same as apple-touch-icon-57x57.png, for retina iPad with iOS7 -->
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ config.base_url }}{{ config.favicons.path }}apple-touch-icon-152x152.png">
+        <!-- Same as apple-touch-icon-57x57.png, for "default" requests, as some devices may look for this specific file. This image may save some 404 errors in your HTTP logs -->
+        <link rel="apple-touch-icon"                 href="{{ config.base_url }}{{ config.favicons.path }}apple-touch-icon.png">
+        <!-- Same as apple-touch-icon.png, expect that is already have rounded corners (but neither drop shadow nor gloss effect) -->
+        <link rel="apple-touch-icon"                 href="{{ config.base_url }}{{ config.favicons.path }}apple-touch-icon-precomposed.png">{% endif %}
+        {% if config.favicons.android.enable %}<!-- For Android Chrome M36+ -->
+        <link rel="icon" type="image/png"            href="{{ config.base_url }}{{ config.favicons.path }}favicon-196x196.png"      sizes="196x196">{% endif %}
+        <!-- For Opera Speed Dial -->
+        <link rel="icon" type="image/png"            href="{{ config.base_url }}{{ config.favicons.path }}favicon-160x160.png"      sizes="160x160">
+        <!-- For Google TV -->
+        <link rel="icon" type="image/png"            href="{{ config.base_url }}{{ config.favicons.path }}favicon-96x96.png"        sizes="96x96">
+        <!-- The classic favicon, displayed in the tabs -->
+        <link rel="icon" type="image/png"            href="{{ config.base_url }}{{ config.favicons.path }}favicon-16x16.png"        sizes="16x16">
+        <!-- For Safari on Mac OS -->
+        <link rel="icon" type="image/png"            href="{{ config.base_url }}{{ config.favicons.path }}favicon-32x32.png"        sizes="32x32">
+        {% if config.favicons.coast.enable %}<!-- For Opera Coast -->
+        <link rel="icon" type="image/png"            href="{{ config.base_url }}{{ config.favicons.path }}coast-icon-228x228.png"   sizes="228x228">{% endif %}
+
+{% endif %}
