@@ -1,4 +1,4 @@
-# Example hologram style guide
+# Frontend Starter Kit
 =========
 
 This is an open source project to help developer start their fontend development fast and easy, allowing tools to do the har work, such as compile LESS, concatenate JS, generate Favicons, create a development folder `/dev` (where all files such as CSS, JS and HTML are not compressed and have source maps) and a distribution folder `dist` (where all files are minified and compressed for performance).
