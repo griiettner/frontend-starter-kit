@@ -1,11 +1,11 @@
 {
-  "name": "Sentient WebApp",
+  "name": "Fronte End Starter Kit",
   "version": "0.0.1",
   "authors": [
-    "Paulo Griiettner <pgriiettner@besentient.com>"
+    "Paulo Griiettner <paulo@griiettner.com>"
   ],
   "license": "MIT",
-  "homepage": "http://besentient.com",
+  "homepage": "http://paulo.griiettner.com",
   "private": true,
   "ignore": [
     "node_modules",

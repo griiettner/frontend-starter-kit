@@ -41,7 +41,11 @@ var autoprefixerOpt = [
                     ];
 
 var pleeeaseOpt   = {
-                        rem: "10px",
+                        rem: ["10px",
+                            {
+                                "replace": true
+                            }
+                        ],
                         next: false,
                         import: false,
                         opacity: true,
