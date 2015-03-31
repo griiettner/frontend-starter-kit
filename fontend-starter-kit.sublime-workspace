@@ -519,6 +519,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 2029,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/LESS-build/LESS.sublime-build",
 	"command_palette":
@@ -653,8 +661,18 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/pgriiettner/Projects/Personal/frontend-starter-kit",
+		"/Users/pgriiettner/Projects/Personal/frontend-starter-kit/doc",
+		"/Users/pgriiettner/Projects/Sentient/0000-frontend-starter-kit",
+		"/Users/pgriiettner/Projects/Sentient/0000-frontend-starter-kit/src",
+		"/Users/pgriiettner/Projects/Sentient/0000-frontend-starter-kit/src/img",
+		"/Users/pgriiettner/Projects/Sentient/0000-frontend-starter-kit/src/tasks"
+	],
 	"file_history":
 	[
+		"/Users/pgriiettner/Projects/Personal/frontend-starter-kit/.gitignore",
 		"/Users/pgriiettner/Projects/Sentient/3605-daiichi-savaysa-avt/htdocs/assets/xml/coverage.xml",
 		"/Users/pgriiettner/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/69AF4E2C-FFA0-49C5-9D1D-2E75263E6312/SENSAMPLE/DSI Extract 2014-10-09 XML v1.xml",
 		"/Users/pgriiettner/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/69AF4E2C-FFA0-49C5-9D1D-2E75263E6312/SENSAMPLE/DSI Extract 2014-10-09 XML v2.xml",
@@ -781,8 +799,7 @@
 		"/Users/pgriiettner/Projects/Sentient/0000-frontend-starter-kit/src/js/plugins.js",
 		"/Users/pgriiettner/Projects/Sentient/0000-frontend-starter-kit/gulpfile.js",
 		"/Users/pgriiettner/Projects/Sentient/0000-frontend-starter-kit/doc/clean.js.md",
-		"/Users/pgriiettner/Projects/Sentient/0000-frontend-starter-kit/dist/grid.html",
-		"/Users/pgriiettner/Library/Application Support/Sublime Text 3/Packages/User/Distraction Free.sublime-settings"
+		"/Users/pgriiettner/Projects/Sentient/0000-frontend-starter-kit/dist/grid.html"
 	],
 	"find":
 	{
@@ -1136,8 +1153,81 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2029,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22,
+								22
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close"
+							],
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
