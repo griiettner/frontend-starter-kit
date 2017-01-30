@@ -1,8 +1,0 @@
-@media (max-width: 1200px) { .rwi-background-image-css { background-image: url("../images/background-image-css-1200.png"); } }
-@media (max-width: 992px) { .rwi-background-image-css { background-image: url("../images/background-image-css-992.png"); } }
-@media (max-width: 768px) { .rwi-background-image-css { background-image: url("../images/background-image-css-768.png"); } }
-@media (max-width: 500px) { .rwi-background-image-css { background-image: url("../images/background-image-css-500.png"); } }
-@media (max-width: 1200px) { .rwi-background { background-image: url("../images/background-1200.jpg"); } }
-@media (max-width: 992px) { .rwi-background { background-image: url("../images/background-992.jpg"); } }
-@media (max-width: 768px) { .rwi-background { background-image: url("../images/background-768.jpg"); } }
-@media (max-width: 500px) { .rwi-background { background-image: url("../images/background-500.jpg"); } }

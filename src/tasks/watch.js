@@ -10,8 +10,6 @@ gulp.task('watch', function(callback) {
             'copy-watch',
             'styles-watch',
             'scripts-watch',
-            'images-watch',
-            'fonts-watch',
             'views-watch'
         ],
         'server',

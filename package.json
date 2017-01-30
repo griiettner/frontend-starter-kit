@@ -26,8 +26,6 @@
     "gulp-sourcemaps": "*",
     "gulp-copy": "*",
     "gulp-cache": "*",
-    "gulp-jshint": "*",
-    "gulp-docco": "*",
     "jshint-stylish": "*",
     "lazypipe": "*",
     "madvoc-route": "*",
@@ -35,19 +33,13 @@
     "require-dir": "*",
     "run-sequence": "*",
     "browser-sync": "*",
-    "psi": "*",
-    "favicons": "*",
-    "humans-generator": "*",
-    "robots-generator": "*",
-    "rwi": "*"
+    "psi": "*"
   },
   "devDependencies": {
     "browser-sync": "^1.3.6",
-    "favicons": "^1.2.6",
     "gulp": "^3.8.7",
     "gulp-cssfont64": "0.0.1",
     "gulp-dir-sync": "^0.1.2",
-    "gulp-docco": "0.0.4",
     "gulp-frontnote": "^0.1.0",
     "gulp-ftp": "^1.0.1",
     "gulp-gzip": "0.0.8",
@@ -56,8 +48,6 @@
     "gulp-pleeease": "^1.0.4",
     "gulp-s3": "^0.3.0",
     "gulp-strip-debug": "^1.0.1",
-    "gulp-symlink": "^1.1.0",
-    "humans-generator": "^1.1.3",
-    "robots-generator": "^1.1.9"
+    "gulp-symlink": "^1.1.0"
   }
 }

@@ -19,8 +19,6 @@ gulp.task('default', function(callback) {
         'clean-dev',
         'styles-raw',
         'scripts-raw',
-        'favicons',
-        'images-raw',
         'views-raw',
         'fonts',
         'copy-dev',

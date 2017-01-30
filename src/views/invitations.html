@@ -1,0 +1,258 @@
+{% extends template_path + "base-left-col.htm" %}
+
+{% set title = "Home" %}
+{% set menu = "event" %}
+
+{% block content %}
+        <script>var menu = "event"; </script>
+        <h2>Ivitations - 2017 February 6th Larry Labelle All Team Meeting</h2>
+        <p>Meeting invitations as of Thursday January 12, 2017 10:06:24 am</p>
+        <div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#invitations" aria-controls="invitations" role="tab" data-toggle="tab">Invitations</a>
+                </li>
+                <li role="presentation">
+                    <a href="#notRegistered" aria-controls="notRegistered" role="tab" data-toggle="tab">Statistics</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="invitations">
+                    <div id="toolbar">
+                        <a href="#" id="exportExcel" class="btn btn-default">Export to Excel</a>
+                        <div class="btn-group" role="group" aria-label="display">
+                            <button type="button" id="btnNotRegistered" class="btn btn-default">
+                                <i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp; Not Registered
+                            </button>
+                            <button type="button" id="btnNotAttending" class="btn btn-default">
+                                <i class="glyphicon glyphicon-ban-circle"></i>&nbsp;&nbsp; Not Attending
+                            </button>
+                            <button type="button" id="btnAll" class="btn btn-default">
+                                <i class="glyphicon glyphicon-list"></i>&nbsp;&nbsp; All Invitations
+                            </button>
+                        </div>
+                    </div>
+
+                    <table
+                        id="tableInvitations"
+                        data-toggle="table"
+                        data-url="{{ base_path }}json/invitations.json"
+                        data-search="true"
+                        data-toolbar="#toolbar"
+                        data-striped="true"
+                        data-showToggle="true"
+                        data-clickToSelect="true"
+                        data-pagination="true"
+                        data-idField="id"
+                        data-pageList="[10, 25, 50, 100, ALL]">
+                        <thead>
+                            <tr>
+                                <th data-field="id" data-checkbox="true">#</th>
+                                <th data-field="name">Name</th>
+                                <th data-field="email">Email</th>
+                                <th data-field="ccEmail">CC Email</th>
+                                <th data-field="opens">Opens</th>
+                                <th data-formatter="invitationAction" data-width="90px">Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="notRegistered">
+                    <div id="StatisticsToolbar">
+                        <div class="btn-group" role="group" aria-label="display">
+                            <button type="button" id="btn1Day" class="btn btn-default">
+                                1 Day
+                            </button>
+                            <button type="button" id="btn5Days" class="btn btn-default">
+                                5 Days
+                            </button>
+                            <button type="button" id="btn1Month" class="btn btn-default">
+                                1 Month
+                            </button>
+                        </div>
+                    </div>
+                    <div id="statisticsInvitation">
+                        <canvas id="myChart" style="width: 600px; height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block scripts %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+        <script src="//npmcdn.com/Chart.Zoom.js@latest/Chart.Zoom.min.js"></script>
+        <script>
+            function invitationAction(value, row, index) {
+                var publishState = row.attending === 0 ? 'default' : 'danger';
+
+                var mailButton = row.attending !== 0 ? [] : [
+                    '<a class="note btn btn-default btn-xs" href="javascript:void(0)" title="Send Email Invitation">',
+                        '<i class="glyphicon glyphicon-envelope text-primary"></i>',
+                    '</a>'
+                ].join('');
+
+                return [
+                    '<div class="btn-group" role="group" aria-label="Actions">',
+                        '<a class="publish btn btn-default btn-xs" href="javascript:void(0)" title="Mark user Registered">',
+                            '<i class="glyphicon glyphicon-ok text-success"></i>',
+                        '</a>',
+                        '<a class="edit btn btn-' + publishState + ' btn-xs" href="{{ base_path }}new-attendee.html" title="Mark user Not Attending">',
+                            '<i class="glyphicon glyphicon-ban-circle"></i>',
+                        '</a>',
+                        mailButton,
+                    '</div>'
+                ].join('');
+            }
+
+            (function($, window, document, undefined) {
+                var ctx = $("#myChart");
+                var data = {
+                    labels: [
+                        "Not Registered",
+                        "Registered",
+                        "Not Attending"
+                    ],
+                    datasets: [{
+                        data: [365, 50, 2],
+                        backgroundColor: [
+                            "#FF6384",
+                            "#36A2EB",
+                            "#FFCE56"
+                        ],
+                        hoverBackgroundColor: [
+                            "#FF6384",
+                            "#36A2EB",
+                            "#FFCE56"
+                        ]
+                    }]
+                };
+
+                var myChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data
+                });
+
+                $('#btnNotRegistered').on('click', function(){
+                    $('#tableInvitations').bootstrapTable('filterBy', {"attending": 0});
+                });
+
+                $('#btnNotAttending').on('click', function(){
+                    $('#tableInvitations').bootstrapTable('filterBy', {"attending": 1});
+                });
+
+                $('#btnAll').on('click', function(){
+                    $('#tableInvitations').bootstrapTable('filterBy', {});
+                });
+
+                $('#btn1Day').on('click', function(){
+                    var timeFormat = 'MM/DD/YYYY HH:mm';
+
+                    function newDateString(days) {
+                        return moment().add(days, 'd').format(timeFormat);
+                    }
+
+                    var color = Chart.helpers.color;
+                    var config = {
+                        type: 'bar',
+                        data: {
+                            labels: [
+                                newDateString(0),
+                                newDateString(1),
+                                newDateString(2),
+                                newDateString(3),
+                                newDateString(4),
+                                newDateString(5),
+                                newDateString(6)
+                            ],
+                            datasets: [{
+                                type: 'bar',
+                                label: 'Dataset 1',
+                                backgroundColor: color("rgb(255, 99, 132)").alpha(0.5).rgbString(),
+                                borderColor: "rgb(255, 99, 132)",
+                                data: [
+                                    54,
+                                    43,
+                                    21,
+                                    78,
+                                    12,
+                                    06,
+                                    35
+                                ],
+                            }, {
+                                type: 'bar',
+                                label: 'Dataset 2',
+                                backgroundColor: color("rgb(54, 162, 235)").alpha(0.5).rgbString(),
+                                borderColor: "rgb(54, 162, 235)",
+                                data: [
+                                    21,
+                                    28,
+                                    05,
+                                    78,
+                                    12,
+                                    18,
+                                    30
+                                ],
+                            }, {
+                                type: 'line',
+                                label: 'Dataset 3',
+                                backgroundColor: color("rgb(75, 192, 192)").alpha(0.5).rgbString(),
+                                borderColor: "rgb(75, 192, 192)",
+                                fill: false,
+                                data: [
+                                    89,
+                                    03,
+                                    03,
+                                    03,
+                                    15,
+                                    14,
+                                    25
+                                ],
+                            }, ]
+                        },
+                        options: {
+                            title: {
+                                text:"Chart.js Combo Time Scale"
+                            },
+                            scales: {
+                                xAxes: [{
+                                    type: "time",
+                                    display: true,
+                                    time: {
+                                        format: timeFormat,
+                                        // round: 'day'
+                                    }
+                                }],
+                            },
+                            elements: {
+                                rectangle: {
+                                    borderWidth: 2,
+                                    borderColor: 'rgb(0, 255, 0)',
+                                    borderSkipped: 'bottom'
+                                }
+                            },
+                            responsive: true,
+                            legend: {
+                                position: 'top',
+                            },
+                            pan: {
+                                enabled: true,
+                                mode: 'xy' // is panning about the y axis neccessary for bar charts?
+                            },
+                            zoom: {
+                                enabled: true,
+                                mode: 'x',
+                                sensitivity: 3,
+                                limits: {
+                                    max: 10,
+                                    min: 0.5
+                                }
+                            },
+                        }
+                    };
+
+                    var myChart = new Chart(ctx, config);
+                });
+            })( jQuery, window, document );
+        </script>
+{% endblock %}

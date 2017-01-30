@@ -26,12 +26,12 @@ var pathProd      = gconf.pathProd;
 
 // Context to pass to the template
 var context       = {
-                        "config": {
+                        "data": {
                             "app_name": "App Name",
                             "webapp": true,
                             "base_url": "http://localhost:8080/",
                             "base_path": "",
-                            "template_path": "templates/",
+                            "template_path": "./" + gconf.pathSrc + "views/templates/",
                             "facebook": {
                                 "app_id": "[FB_APP_ID]"
                             },
@@ -89,6 +89,7 @@ plugins.nunjucksRender.nunjucks.configure([pathSrc + "views/"]);
 */
 gulp.task('views-raw', function () {
     console.log('###### --- Creating Dev View Files in ' + pathDev + ' ---');
+    console.log(files);
     return gulp.src(files)
         .pipe(plugins.nunjucksRender(context))
         .pipe(gulp.dest(pathDev));

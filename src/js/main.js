@@ -1,9 +1,11 @@
-"use strict";
 
-(function() {
-  var foo = "bar";
+;(function($, window, document, undefined) {
 
-  if (foo === "bar") {
-    console.log(foo);
-  }
-}());
+  "use strict";
+
+  $('#exportExcel').on('click', function () {
+    $table.tableExport({
+      type:'excel'
+    });
+  });
+})( jQuery, window, document );

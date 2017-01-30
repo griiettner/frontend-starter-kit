@@ -29,7 +29,7 @@ var path          = [devPath, prodPath];
 var copyFiles     = {
                         "" : {
                             "files": [
-                                gconf.pathSrc + ".htaccess",
+                                gconf.pathSrc + "img/*"
                             ]
                         }
                     };
@@ -43,7 +43,8 @@ gulp.task('copy-dev', function() {
     for (var outputPath in copyFiles) {
         console.log('###### --- Copying Dev Files to ' + devPath);
         gulp.src(copyFiles[outputPath].files)
-            .pipe(plugins.newer(devPath))
+            //.pipe(plugins.newer(devPath))
+            .pipe(plugins.copy(devPath))
             .pipe(gulp.dest(devPath));
     }
     return;

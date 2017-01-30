@@ -1,0 +1,115 @@
+{% extends template_path + "base-left-col.htm" %}
+
+{% set title = "Home" %}
+{% set menu = "event" %}
+
+{% block content %}
+        <script>var menu = "event"; </script>
+        <h2>New Report - 2017 February 6th Larry Labelle All Team Meeting</h2>
+        <div>
+
+            <div id="toolbar">
+                <div class="btn-group" role="group" aria-label="display">
+                    <a href="{{ base_path }}reports.html" class="btn btn-default">
+                        Save
+                    </a>
+                    <a href="{{ base_path }}reports.html" class="btn btn-default">
+                        Save &amp; Close
+                    </a>
+                    <a href="{{ base_path }}reports.html" class="btn btn-default">
+                        Save as Copy
+                    </a>
+                </div>
+            </div>
+
+            <table
+                id="tableInvitations"
+                data-toggle="table"
+                data-url="{{ base_path }}json/registrations.json"
+                data-search="true"
+                data-toolbar="#toolbar"
+                data-striped="true"
+                data-showToggle="true"
+                data-clickToSelect="true"
+                data-pagination="true"
+                data-show-columns="true"
+                data-idField="id"
+                data-pageList="[10, 25, 50, 100, ALL]">
+                <thead>
+                    <tr>
+                        <th data-field="id" data-checkbox="true">#</th>
+                        <th data-field="registrationId" data-sortable="true">Registration ID</th>
+                        <th data-field="firstname" data-sortable="true">First Name</th>
+                        <th data-field="middlename" data-sortable="true">Middle Name</th>
+                        <th data-field="lastname" data-sortable="true">Last Name</th>
+                        <th data-field="employeeId" data-sortable="true">Employee ID</th>
+                        <th data-field="title" data-sortable="true">Title</th>
+                        <th data-field="company" data-sortable="true">Company</th>
+                        <th data-field="address" data-sortable="true">Address</th>
+                        <th data-field="city" data-sortable="true">City</th>
+                        <th data-field="state" data-sortable="true"State</th>
+                        <th data-field="zipCode" data-sortable="true">Zip Code</th>
+                        <th data-field="phone" data-sortable="true">Phone</th>
+                        <th data-field="mobilePhone" data-sortable="true">Mob Phone</th>
+                        <th data-field="email" data-sortable="true">Email</th>
+                        <th data-field="foodAllergies" data-sortable="true">Food Preferences</th>
+                        <th data-field="otherAllergies" data-sortable="true">Other Food Preference</th>
+                        <th data-field="ecFirstName" data-sortable="true">Emmerg Contact First Name</th>
+                        <th data-field="ecLastName" data-sortable="true">Emmerg Contact Last Name</th>
+                        <th data-field="ecPrimaryPhone" data-sortable="true">Emmerg Conatct Phone</th>
+                        <th data-field="ecMobilePhone" data-sortable="true">Emmerg Contact Mob Phone</th>
+                        <th data-field="emergencyComments" data-sortable="true">Emmerg Contact Comments</th>
+                        <th data-field="airTravelNeeded" data-sortable="true">Air Travel Needed</th>
+                        <th data-field="govtName" data-sortable="true">Government ID Name</th>
+                        <th data-field="govtIDState" data-sortable="true">Gov. State</th>
+                        <th data-field="birthMonth" data-sortable="true">birth Month</th>
+                        <th data-field="birthDay" data-sortable="true">Birth Day</th>
+                        <th data-field="birthYear" data-sortable="true">Birth Year</th>
+                        <th data-field="gender" data-sortable="true">Gender</th>
+                        <th data-field="airTravelCostCenter" data-sortable="true">Air Travel Cost Center</th>
+                        <th data-field="originatingAirport" data-sortable="true">Depart Airport</th>
+                        <th data-field="departureDate" data-sortable="true">Depart Date</th>
+                        <th data-field="departureSeating" data-sortable="true">Depart Seating</th>
+                        <th data-field="destinationAirport" data-sortable="true">Return Airport</th>
+                        <th data-field="arrivalDate" data-sortable="true">Return Date</th>
+                        <th data-field="arrivalSeating" data-sortable="true">Return Seating</th>
+                        <th data-field="airComments" data-sortable="true">Air Comments</th>
+                        <th data-field="frequentFlyerAirline_1" data-sortable="true">Freq Flyer 1 Airline</th>
+                        <th data-field="frequentFlyerNumber_1" data-sortable="true">Fre Flyer 1 Number</th>
+                        <th data-field="frequentFlyerAirline_1" data-sortable="true">Freq Flyer 2 Airline</th>
+                        <th data-field="frequentFlyerNumber_1" data-sortable="true">Fre Flyer 2 Number</th>
+                        <th data-field="frequentFlyerAirline_1" data-sortable="true">Freq Flyer 3 Airline</th>
+                        <th data-field="frequentFlyerNumber_1" data-sortable="true">Fre Flyer 3 Number</th>
+                        <th data-field="needGroundTransportation" data-sortable="true">Need Ground Transport</th>
+                        <th data-field="groundTransportationComments" data-sortable="true">Ground Transp Comments</th>
+                        <th data-field="needHotelRoom" data-sortable="true">Need Hotel</th>
+                        <th data-field="roomType" data-sortable="true">Room Type</th>
+                        <th data-field="checkIn" data-sortable="true">Check In Date</th>
+                        <th data-field="checkOut" data-sortable="true">Check Out Date</th>
+                        <th data-field="adaAccessible" data-sortable="true">Room Accessiblity</th>
+                        <th data-field="sleepingRoomSpecialRequests" data-sortable="true">Sleeping Special Request</th>
+                        <th data-field="eventId" data-sortable="true">Event ID</th>
+                        <th data-field="attended" data-sortable="true">Attended</th>
+                        <th data-field="regStatus" data-sortable="true">Registration Status</th>
+                        <th data-field="globalTravelGroupNumber" data-sortable="true">Gender</th>
+                        <th data-field="uid">UID</th>
+                        <th data-field="created" data-sortable="true">Created Date</th>
+                        <th data-field="created_by" data-sortable="true">Created By</th>
+                        <th data-field="modified" data-sortable="true">Modified Date</th>
+                        <th data-field="modified_by" data-sortable="true">Modified By</th>
+                        <th data-field="ipaddress" data-sortable="true">IP Address</th>
+                        <th data-field="user_id" data-sortable="true">User Id</th>
+
+                    </tr>
+                </thead>
+            </table>
+        </div>
+{% endblock %}
+
+{% block scripts %}
+        <script>
+            (function($, window, document, undefined) {
+
+            })( jQuery, window, document );
+        </script>
+{% endblock %}

@@ -29,6 +29,8 @@ var outputFile    = 'script.js';
 // JS files to be concatenated, it is an array and can be more than one
 var files         = [
                         gconf.pathSrc + "js/config.js",
+                        gconf.pathSrc + "js/plugins/*.js",
+                        gconf.pathSrc + "js/plugins.js",
                         gconf.pathSrc + "js/main.js"
                     ];
 
@@ -66,17 +68,17 @@ var jsPath        = devPath + outputFile;
 // ####Task Description
 
 // Start Task with dependency on `jshint` task, that must run first.
-gulp.task('scripts-raw', ['jshint'], function() {
+gulp.task('scripts-raw', function() {
     // Verbose the output path
     console.log('###### --- Creating Dev Script Files in ' + jsPath + '---');
     // Source path
     return gulp.src(files)
         // Initiate Source Maps
-        .pipe(plugins.sourcemaps.init())
+        // .pipe(plugins.sourcemaps.init())
         // Concatenating JS files
         .pipe(plugins.concat(outputFile))
         // Writing Source Maps
-        .pipe(plugins.sourcemaps.write())
+        //.pipe(plugins.sourcemaps.write())
         // Create output file
         .pipe(gulp.dest(devPath));
 });

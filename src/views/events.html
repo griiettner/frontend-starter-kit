@@ -1,0 +1,259 @@
+{% extends template_path + "base-left-col.htm" %}
+
+{% set title = "Home" %}
+{% set menu = "admin" %}
+
+{% block content %}
+    <script>var menu = "events"; </script>
+    <h2>Events Registration Sites - Active</h2>
+
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#list" aria-controls="list" role="tab" data-toggle="tab">List</a>
+            </li>
+            <li role="presentation">
+                <a href="#calendar" aria-controls="calendar" role="tab" data-toggle="tab">Calendar</a>
+            </li>
+            <li role="presentation">
+                <a href="#statistics" aria-controls="statistics" role="tab" data-toggle="tab">Statistics</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="list">
+                <div id="toolbar">
+                    <a href="#" id="exportExcel" class="btn btn-default">Export to Excel</a>
+                    <div class="btn-group" role="group" aria-label="display">
+                        <button type="button" id="eventActive" class="btn btn-default">
+                            <i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp; Active
+                        </button>
+                        <button type="button" id="eventArchived" class="btn btn-default">
+                            <i class="glyphicon glyphicon-folder-close"></i>&nbsp;&nbsp; Archived
+                        </button>
+                        <button type="button" id="eventAll" class="btn btn-default">
+                            <i class="glyphicon glyphicon-list"></i>&nbsp;&nbsp; All Events
+                        </button>
+                    </div>
+                </div>
+                <table id="tableEvents"></table>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="calendar">
+                <div id="calendarEvents"></div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="statistics">
+                <div id="statisticsEvents">
+                   <div class="btn-group pull-right" role="group" aria-label="display">
+                        <button type="button" id="eventActive" class="btn btn-success btn-xs">
+                            Events
+                        </button>
+                        <button type="button" id="eventArchived" class="btn btn-primary btn-xs">
+                            Participations
+                        </button>
+                    </div>
+
+                    <h3>2014</h3>
+
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" style="width: 4.52830188679245%">
+                        <span class="">16</span>
+                      </div>
+                      <div class="progress-bar progress-bar-primary" style="width: 13.1849503858875%">
+                        <span class="">2,126</span>
+                      </div>
+                    </div>
+
+                    <h3>2015</h3>
+
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" style="width: 16.4150943396226%">
+                        <span class="">58</span>
+                      </div>
+                      <div class="progress-bar progress-bar-primary" style="width: 43.6790242557883%">
+                        <span class="">7,043</span>
+                      </div>
+                    </div>
+
+                    <h3>2016</h3>
+
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" style="width: 7.64150943396226%">
+                        <span class="">27</span>
+                      </div>
+                      <div class="progress-bar progress-bar-primary" style="width: 31.8336549062845%">
+                        <span class="">5,133</span>
+                      </div>
+                    </div>
+
+                    <h3>2017</h3>
+
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" style="width: 1.41509433962264%">
+                        <span class="">5</span>
+                      </div>
+                      <div class="progress-bar progress-bar-primary" style="width: 1.30237045203969%">
+                        <span class="">210</span>
+                      </div>
+                    </div>
+
+                    <h3>Total</h3>
+
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" style="width: 30%">
+                        <span class="">106</span>
+                      </div>
+                      <div class="progress-bar progress-bar-primary" style="width: 70%">
+                        <span class="">14,152</span>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
+        <script>
+        (function($, window, document, undefined) {
+
+          window.operateEvents = {
+            'click .publish': function (e, value, row, index) {
+              $table.bootstrapTable('remove', {
+                field: 'id',
+                values: [row.id]
+              });
+            }
+          };
+
+          function operateFormatter(value, row, index) {
+            var archiveIcon = row.completed === 0 ? 'folder-open' : 'folder-close',
+            archiveState = row.completed === 0 ? 'primary' : 'warning',
+            publishIcon = row.completed === 0 ? 'ok' : 'remove',
+            publishState = row.completed === 0 ? 'success' : 'danger';
+
+            return [
+              '<div class="btn-group" role="group" aria-label="Actions">',
+                '<a class="edit btn btn-default btn-xs" href="{{ base_path }}new-event.html" title="Edit">',
+                  '<i class="glyphicon glyphicon-pencil"></i>',
+                '</a>',
+                '<a class="publish btn btn-default btn-xs" href="javascript:void(0)" title="Published">',
+                  '<i class="glyphicon glyphicon-' + publishIcon + ' text-' + publishState + '"></i>',
+                '</a>',
+                '<a class="archive btn btn-default btn-xs" href="javascript:void(0)" title="Not Archived">',
+                  '<i class="glyphicon glyphicon-' + archiveIcon + ' text-' + archiveState + '"></i>',
+                '</a>',
+              '</div>'
+            ].join('');
+          }
+
+          function goToEvent(value, row, index) {
+            return '<a href="{{ base_path }}event.html">' + row.title + '</a>';
+          }
+
+          // Build Events Table
+          var $table = $('#tableEvents');
+
+          $table.bootstrapTable({
+            columns: [
+              {
+                field: 'id',
+                title: '#',
+                checkbox: true
+              }, {
+                field: 'title',
+                title: 'Event Name',
+                sortable: true,
+                class: 'rowTitle',
+                formatter: goToEvent
+              }, {
+                field: 'eventid',
+                title: 'Event ID',
+                sortable: true
+              }, {
+                field: 'registrations',
+                title: 'Reg',
+                sortable: true,
+                searchable: false
+              }, {
+                field: 'start',
+                title: 'Start',
+                sortable: true,
+                width: '110px'
+              }, {
+                field: 'end',
+                title: 'End',
+                sortable: true,
+                width: '110px'
+              }, {
+                field: 'operate',
+                title: 'Actions',
+                align: 'center',
+                events: operateEvents,
+                formatter: operateFormatter,
+                width: '90px'
+              }, {
+                field: 'completed',
+                title: 'completed',
+                visible: false
+              }
+            ],
+            url: '{{ base_path }}json/events.json',
+            striped: true,
+            search: true,
+            showToggle: true,
+            toolbar: '#toolbar',
+            clickToSelect: true,
+            pagination: true,
+            idField: 'id',
+            pageList: '[10, 25, 50, 100, ALL]',
+          });
+
+          $table.bootstrapTable('filterBy', {"completed": 0});
+
+          $('#eventActive').on('click', function(){
+            $table.bootstrapTable('filterBy', {"completed": 0});
+          });
+
+          $('#eventArchived').on('click', function(){
+            $table.bootstrapTable('filterBy', {"completed": 1});
+          });
+
+          $('#eventAll').on('click', function(){
+            $table.bootstrapTable('filterBy', {});
+          });
+
+          // Show Event Calendar only when the tab is selected
+          $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $('#calendarEvents').fullCalendar('destroy');
+            if (e.target.hash === '#calendar') {
+              $('#calendarEvents').fullCalendar({
+                header: {
+                  left: 'prev,next today',
+                  center: 'title',
+                  right: 'month,agendaWeek,agendaDay,listWeek'
+                },
+                editable: true,
+                navLinks: true, // can click day/week names to navigate views
+                eventLimit: true, // allow "more" link when too many events
+                eventSources: {
+                  url: '{{ base_path }}json/events.json',
+                  cache: false,
+                  data: function() {
+
+                  },
+                  error: function() {
+                    console.log('Calendar JSON Error')
+                  }
+                },
+                loading: function(bool) {
+                  $('#loading').toggle(bool);
+                }
+              });
+            }
+          });
+
+        })(jQuery, window, document);
+        </script>
+{% endblock %}

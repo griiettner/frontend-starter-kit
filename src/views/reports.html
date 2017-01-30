@@ -1,0 +1,70 @@
+{% extends template_path + "base-left-col.htm" %}
+
+{% set title = "Home" %}
+{% set menu = "event" %}
+
+{% block content %}
+        <script>var menu = "event"; </script>
+        <h2>Reports Manager - 2017 February 6th Larry Labelle All Team Meeting</h2>
+        <div>
+            <div id="toolbar">
+                <div class="btn-group" role="group" aria-label="display">
+                    <a href="{{ base_path }}new-report.html" class="btn btn-default">
+                        <i class="fa fa-file-text-o"></i>&nbsp;&nbsp; New Report
+                    </a>
+                </div>
+            </div>
+
+            <table
+                id="tableInvitations"
+                data-toggle="table"
+                data-url="{{ base_path }}json/reports.json"
+                data-search="true"
+                data-toolbar="#toolbar"
+                data-striped="true"
+                data-showToggle="true"
+                data-clickToSelect="true"
+                data-pagination="true"
+                data-idField="id"
+                data-pageList="[10, 25, 50, 100, ALL]">
+                <thead>
+                    <tr>
+                        <th data-field="state" data-checkbox="true">#</th>
+                        <th data-field="id" data-sortable="true">ID</th>
+                        <th data-field="title" data-sortable="true">Title</th>
+                        <th data-field="created_by_name" data-sortable="true">Created By</th>
+                        <th data-field="created_at">Created at</th>
+                        <th data-field="modified_by_name">Modified by</th>
+                        <th data-field="modified_at">Modified at</th>
+                        <th data-formatter="reportsAction" data-width="90px">Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+{% endblock %}
+
+{% block scripts %}
+        <script>
+            function reportsAction(value, row, index) {
+
+                return [
+                    '<div class="btn-group" role="group" aria-label="Actions">',
+                        '<a class="edit btn btn-default btn-xs" href="{{ base_path }}new-report.html" title="Edit">',
+                            '<i class="glyphicon glyphicon-pencil"></i>',
+                        '</a>',
+                        '<a class="publish btn btn-default btn-xs" href="javascript:void(0)" title=Report Published">',
+                            '<i class="glyphicon glyphicon-ok text-success"></i>',
+                        '</a>',
+                        '<a class="edit btn btn-default btn-xs" href="{{ base_path }}new-report.html" title="Delete Report">',
+                            '<i class="glyphicon glyphicon-remove text-danger"></i>',
+                        '</a>',
+                    '</div>'
+                ].join('');
+            }
+
+            (function($, window, document, undefined) {
+
+            })( jQuery, window, document );
+        </script>
+{% endblock %}
+

@@ -1,0 +1,786 @@
+{% extends template_path + "base-left-col.htm" %}
+
+{% set title = "Home" %}
+{% set menu = "event" %}
+
+{% block content %}
+    <script>var menu = "event"; </script>
+    <h2>2017 February 6th Larry Labelle All Team Meeting</h2>
+    <p>Meeting <b>ACTIVE</b> Registrations as of Thursday January 12, 2017 10:06:24 am</p>
+    <div>
+        <div class="row top_tiles" style="margin: 10px 0;">
+            <div class="col-md-3 col-sm-3 col-xs-6 tile">
+                <span>Invitees</span>
+                <h2>115</h2>
+                <span class="sparkline_one" style="height: 160px;"><canvas width="196" height="40" style="display: inline-block; width: 196px; height: 40px; vertical-align: top;"></canvas></span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 tile">
+                <span>Attending</span>
+                <h2>78</h2>
+                <span class="sparkline_one" style="height: 160px;"><canvas width="196" height="40" style="display: inline-block; width: 196px; height: 40px; vertical-align: top;"></canvas></span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 tile">
+                <span>Pending</span>
+                <h2>37</h2>
+                <span class="sparkline_two" style="height: 160px;"><canvas width="200" height="40" style="display: inline-block; width: 200px; height: 40px; vertical-align: top;"></canvas></span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 tile">
+                <span>Not Attending</span>
+                <h2>9</h2>
+                <span class="sparkline_one" style="height: 160px;"><canvas width="196" height="40" style="display: inline-block; width: 196px; height: 40px; vertical-align: top;"></canvas></span>
+            </div>
+        </div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#list" aria-controls="list" role="tab" data-toggle="tab">List</a>
+            </li>
+            <li role="presentation">
+                <a href="#statistics" aria-controls="statistics" role="tab" data-toggle="tab">Statistics</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="list">
+              <div id="toolbar">
+                <a href="#" id="exportExcel" class="btn btn-default">Export to Excel</a>
+                <div class="btn-group" role="group" aria-label="display">
+                    <button type="button" id="eventActive" class="btn btn-default">
+                        <i class="glyphicon glyphicon-ok"></i>&nbsp;&nbsp; Active
+                    </button>
+                    <button type="button" id="eventInactive" class="btn btn-default">
+                        <i class="glyphicon glyphicon-remove"></i>&nbsp;&nbsp; Inactive
+                    </button>
+                    <button type="button" id="eventAll" class="btn btn-default">
+                        <i class="glyphicon glyphicon-list"></i>&nbsp;&nbsp; All Attendees
+                    </button>
+                </div>
+              </div>
+
+              <table
+                data-toggle="table"
+                data-url="{{ base_path }}json/registrations.json"
+                data-search="true"
+                data-toolbar="#toolbar"
+                data-striped="true"
+                data-showToggle="true"
+                data-clickToSelect="true"
+                data-pagination="true"
+                data-idField="id"
+                data-pageList="[10, 25, 50, 100, ALL]">
+                <thead>
+                  <tr>
+                    <th data-field="id" data-checkbox="true">#</th>
+                    <th data-field="firstname">First Name</th>
+                    <th data-field="lastname">Last Name</th>
+                    <th data-field="created">Registered</th>
+                    <th data-formatter="eventAction" data-width="110px">Action</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="statistics">
+                <div id="statisticsEvent">
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="dashboard_graph x_panel">
+                            <div class="row x_title">
+                                <div class="col-md-6">
+                                    <h3>Network Activities <small>Graph title sub-title</small></h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                        <span>December 21, 2016 - January 19, 2017</span> <b class="caret"></b>
+                                    </div>
+                                </div>
+                            </div>
+                            <canvas id="myChart" style="width: 100%; height: 200px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="x_panel fixed_height_320">
+                            <div class="x_title">
+                                <h2>Invitations</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="#">Settings 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Settings 2</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="close-link">
+                                            <i class="fa fa-close"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="widget_summary">
+                                    <div class="w_left w_25">
+                                        <span>Attending</span>
+                                    </div>
+                                    <div class="w_center w_55">
+                                        <div class="progress">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;">
+                                                <span class="sr-only">72%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w_right w_20">
+                                        <span>78</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="widget_summary">
+                                    <div class="w_left w_25">
+                                        <span>Pending</span>
+                                    </div>
+                                    <div class="w_center w_55">
+                                        <div class="progress">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" style="width: 32%;">
+                                                <span class="sr-only">32%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w_right w_20">
+                                        <span>37</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="widget_summary">
+                                    <div class="w_left w_25">
+                                        <span>Not Attending</span>
+                                    </div>
+                                    <div class="w_center w_55">
+                                        <div class="progress">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100" style="width: 6%;">
+                                                <span class="sr-only">6% </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w_right w_20">
+                                        <span>9</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="x_panel fixed_height_320">
+                          <div class="x_title">
+                            <h2>Daily users <small>Sessions</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Settings 1</a>
+                                  </li>
+                                  <li><a href="#">Settings 2</a>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+                          <table class="" style="width:100%">
+                            <tbody><tr>
+                              <th style="width:37%;">
+                                <p>Top 5</p>
+                              </th>
+                              <th>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                  <p class="">Device</p>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                  <p class="">Progress</p>
+                                </div>
+                              </th>
+                            </tr>
+                            <tr>
+                              <td><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                                <canvas id="canvas1" height="140" width="140" style="margin: 15px 10px 10px 0px; width: 140px; height: 140px;"></canvas>
+                              </td>
+                              <td>
+                                <table class="tile_info">
+                                  <tbody><tr>
+                                    <td>
+                                      <p><i class="fa fa-square blue"></i>IOS </p>
+                                    </td>
+                                    <td>30%</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <p><i class="fa fa-square green"></i>Android </p>
+                                    </td>
+                                    <td>10%</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <p><i class="fa fa-square purple"></i>Blackberry </p>
+                                    </td>
+                                    <td>20%</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <p><i class="fa fa-square aero"></i>Symbian </p>
+                                    </td>
+                                    <td>15%</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <p><i class="fa fa-square red"></i>Others </p>
+                                    </td>
+                                    <td>30%</td>
+                                  </tr>
+                                </tbody></table>
+                              </td>
+                            </tr>
+                          </tbody></table>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="x_panel fixed_height_320">
+                          <div class="x_title">
+                            <h2>Profile Settings <small>Sessions</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Settings 1</a>
+                                  </li>
+                                  <li><a href="#">Settings 2</a>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+                            <div class="dashboard-widget-content">
+                              <ul class="quick-list">
+                                <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a></li>
+                                <li><i class="fa fa-thumbs-up"></i><a href="#">Favorites</a></li>
+                                <li><i class="fa fa-calendar-o"></i><a href="#">Activities</a></li>
+                                <li><i class="fa fa-cog"></i><a href="#">Settings</a></li>
+                                <li><i class="fa fa-area-chart"></i><a href="#">Logout</a></li>
+                              </ul>
+
+                              <div class="sidebar-widget">
+                                <h4>Profile Completion</h4>
+                                <canvas width="150" height="80" id="foo" class="" style="width: 160px; height: 100px;"></canvas>
+                                <div class="goal-wrapper">
+                                  <span id="gauge-text" class="gauge-value pull-left">80</span>
+                                  <span class="gauge-value pull-left">%</span>
+                                  <span id="goal-text" class="goal-value pull-right">100%</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12 widget_tally_box">
+                        <div class="x_panel">
+                          <div class="x_title">
+                            <h2>User Uptake</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Settings 1</a>
+                                  </li>
+                                  <li><a href="#">Settings 2</a>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+
+                            <div id="graph_bar" style="width: 100%; height: 200px; position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg height="200" version="1.1" width="277" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël @@VERSION</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><text x="32.515625" y="122.35775487981249" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.014004879812489">0</tspan></text><path fill="none" stroke="#aaaaaa" d="M45.015625,122.35775487981249H252" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="32.515625" y="98.01831615985937" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.002691159859367">100</tspan></text><path fill="none" stroke="#aaaaaa" d="M45.015625,98.01831615985937H252" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="32.515625" y="73.67887743990624" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.007002439906245">200</tspan></text><path fill="none" stroke="#aaaaaa" d="M45.015625,73.67887743990624H252" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="32.515625" y="49.33943871995312" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.011313719953122">300</tspan></text><path fill="none" stroke="#aaaaaa" d="M45.015625,49.33943871995312H252" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="32.515625" y="25" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4">400</tspan></text><path fill="none" stroke="#aaaaaa" d="M45.015625,25H252" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="241.65078125" y="134.8577548798125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.5,-0.866,0.866,0.5,-0.6354,288.275)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.014004879812489">Oct</tspan></text><text x="220.95234375" y="134.8577548798125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.5,-0.866,0.866,0.5,-11.6588,271.5093)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.014004879812489">Sep</tspan></text><text x="200.25390625" y="134.8577548798125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.5,-0.866,0.866,0.5,-22.0026,253.5934)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.014004879812489">Aug</tspan></text><text x="179.55546875" y="134.8577548798125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.5,-0.866,0.866,0.5,-30.8541,233.0523)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.014004879812489">Jul</tspan></text><text x="158.85703125" y="134.8577548798125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.5,-0.866,0.866,0.5,-42.2057,216.8685)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.014004879812489">Jun</tspan></text><text x="138.15859375" y="134.8577548798125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.5,-0.866,0.866,0.5,-53.3854,200.3734)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.014004879812489">May</tspan></text><text x="117.46015625" y="134.8577548798125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.5,-0.866,0.866,0.5,-62.737,180.7255)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.014004879812489">Apr</tspan></text><text x="96.76171875" y="134.8577548798125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.5,-0.866,0.866,0.5,-73.5807,163.6621)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.014004879812489">Mar</tspan></text><text x="76.06328125" y="134.8577548798125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.5,-0.866,0.866,0.5,-83.9323,145.7462)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.014004879812489">Feb</tspan></text><text x="55.36484375" y="134.8577548798125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.5,-0.866,0.866,0.5,-93.9479,127.2484)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.014004879812489">Jan</tspan></text><rect x="47.6029296875" y="102.88620390384999" width="6.261914062500001" height="19.4715509759625" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="68.30136718749999" y="91.93345647987108" width="6.261914062500001" height="30.424298399941407" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="88.99980468749999" y="79.520342732695" width="6.261914062500001" height="42.83741214711749" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="109.6982421875" y="67.8374121471175" width="6.261914062500001" height="54.520342732694985" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="130.3966796875" y="57.85824227193672" width="6.261914062500001" height="64.49951260787577" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="151.0951171875" y="45.93191729915969" width="6.261914062500001" height="76.4258375806528" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="171.7935546875" y="37.89990252157516" width="6.261914062500001" height="84.45785235823733" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="192.4919921875" y="52.503565753547036" width="6.261914062500001" height="69.85418912626545" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="213.1904296875" y="63.943101951925" width="6.261914062500001" height="58.41465292788749" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="233.8888671875" y="71.0015391807114" width="6.261914062500001" height="51.356215699101085" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect></svg><div class="morris-hover morris-default-style" style="left: 161px; top: 62px; display: none;"><div class="morris-hover-row-label">Oct</div><div class="morris-hover-point" style="color: #26B99A">
+                              Hours worked:
+                              211
+                            </div><div class="morris-hover-point" style="color: #34495E">
+                              SORN:
+                              -
+                            </div></div></div>
+
+                            <div class="col-xs-12 bg-white progress_summary">
+
+                              <div class="row">
+                                <div class="progress_title">
+                                  <span class="left">Escudor Wireless 1.0</span>
+                                  <span class="right">This sis</span>
+                                  <div class="clearfix"></div>
+                                </div>
+
+                                <div class="col-xs-2">
+                                  <span>SSD</span>
+                                </div>
+                                <div class="col-xs-8">
+                                  <div class="progress progress_sm">
+                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="89" style="width: 89%;" aria-valuenow="88"></div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 more_info">
+                                  <span>89%</span>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="progress_title">
+                                  <span class="left">Mobile Access</span>
+                                  <span class="right">Smart Phone</span>
+                                  <div class="clearfix"></div>
+                                </div>
+
+                                <div class="col-xs-2">
+                                  <span>App</span>
+                                </div>
+                                <div class="col-xs-8">
+                                  <div class="progress progress_sm">
+                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="79" style="width: 79%;" aria-valuenow="77"></div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 more_info">
+                                  <span>79%</span>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="progress_title">
+                                  <span class="left">WAN access users</span>
+                                  <span class="right">Total 69%</span>
+                                  <div class="clearfix"></div>
+                                </div>
+
+                                <div class="col-xs-2">
+                                  <span>Usr</span>
+                                </div>
+                                <div class="col-xs-8">
+                                  <div class="progress progress_sm">
+                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="69" style="width: 69%;" aria-valuenow="68"></div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 more_info">
+                                  <span>69%</span>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- start of weather widget -->
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="x_panel">
+                          <div class="x_title">
+                            <h2>Today's Weather <small>Sessions</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Settings 1</a>
+                                  </li>
+                                  <li><a href="#">Settings 2</a>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <div class="temperature"><b>Monday</b>, 07:30 AM
+                                  <span>F</span>
+                                  <span><b>C</b>
+                                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <div class="weather-icon">
+                                  <span>
+                                                      <canvas height="84" width="84" id="partly-cloudy-day"></canvas>
+                                                  </span>
+
+                                </div>
+                              </div>
+                              <div class="col-sm-8">
+                                <div class="weather-text">
+                                  <h2>Texas
+                                                      <br><i>Partly Cloudy Day</i>
+                                                  </h2>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-12">
+                              <div class="weather-text pull-right">
+                                <h3 class="degrees">23</h3>
+                              </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+
+                            <div class="row weather-days">
+                              <div class="col-sm-2">
+                                <div class="daily-weather">
+                                  <h2 class="day">Mon</h2>
+                                  <h3 class="degrees">25</h3>
+                                  <span>
+                                                          <canvas id="clear-day" width="32" height="32">
+                                                          </canvas>
+
+                                                  </span>
+                                  <h5>15
+                                                      <i>km/h</i>
+                                                  </h5>
+                                </div>
+                              </div>
+                              <div class="col-sm-2">
+                                <div class="daily-weather">
+                                  <h2 class="day">Tue</h2>
+                                  <h3 class="degrees">25</h3>
+                                  <canvas height="32" width="32" id="rain"></canvas>
+                                  <h5>12
+                                                      <i>km/h</i>
+                                                  </h5>
+                                </div>
+                              </div>
+                              <div class="col-sm-2">
+                                <div class="daily-weather">
+                                  <h2 class="day">Wed</h2>
+                                  <h3 class="degrees">27</h3>
+                                  <canvas height="32" width="32" id="snow"></canvas>
+                                  <h5>14
+                                                      <i>km/h</i>
+                                                  </h5>
+                                </div>
+                              </div>
+                              <div class="col-sm-2">
+                                <div class="daily-weather">
+                                  <h2 class="day">Thu</h2>
+                                  <h3 class="degrees">28</h3>
+                                  <canvas height="32" width="32" id="sleet"></canvas>
+                                  <h5>15
+                                                      <i>km/h</i>
+                                                  </h5>
+                                </div>
+                              </div>
+                              <div class="col-sm-2">
+                                <div class="daily-weather">
+                                  <h2 class="day">Fri</h2>
+                                  <h3 class="degrees">28</h3>
+                                  <canvas height="32" width="32" id="wind"></canvas>
+                                  <h5>11
+                                                      <i>km/h</i>
+                                                  </h5>
+                                </div>
+                              </div>
+                              <div class="col-sm-2">
+                                <div class="daily-weather">
+                                  <h2 class="day">Sat</h2>
+                                  <h3 class="degrees">26</h3>
+                                  <canvas height="32" width="32" id="cloudy"></canvas>
+                                  <h5>10
+                                                      <i>km/h</i>
+                                                  </h5>
+                                </div>
+                              </div>
+                              <div class="clearfix"></div>
+                            </div>
+                          </div>
+                        </div>
+
+                    </div>
+                    <!-- end of weather widget -->
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="x_panel fixed_height_320">
+                          <div class="x_title">
+                            <h2>Incomes <small>Sessions</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Settings 1</a>
+                                  </li>
+                                  <li><a href="#">Settings 2</a>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+                            <div class="dashboard-widget-content">
+                              <ul class="quick-list">
+                                <li><i class="fa fa-bars"></i><a href="#">Subscription</a></li>
+                                <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
+                                <li><i class="fa fa-support"></i><a href="#">Help Desk</a> </li>
+                                <li><i class="fa fa-heart"></i><a href="#">Donations</a> </li>
+                              </ul>
+
+                              <div class="sidebar-widget">
+                                <h4>Goal</h4>
+                                <canvas width="150" height="80" id="foo2" class="" style="width: 160px; height: 100px;"></canvas>
+                                <div class="goal-wrapper">
+                                  <span class="gauge-value pull-left">$</span>
+                                  <span id="gauge-text2" class="gauge-value pull-left">4,200</span>
+                                  <span id="goal-text2" class="goal-value pull-right">$5,000</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js" integrity="sha256-RASNMNlmRtIreeznffYMDUxBXcMRjijEaaGF/gxT6vw=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js" integrity="sha256-BuAkLaFyq4WYXbN3TFSsG1M5GltEeFehAMURi4KBpUM=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gauge.js/1.2.1/gauge.min.js" integrity="sha256-LZV0zhtokL1szx7z0E/hMo81xbvO17azMUWRGe9P5IA=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js" integrity="sha256-tZNzlXmrMrO9BLT6Gv4Y0LfAN8HdbZ7+LIuNf6WkFC0=" crossorigin="anonymous"></script>
+    <script>
+
+      function eventAction(value, row, index) {
+        var publishIcon = row.regStatus === "1" ? 'ok' : 'remove',
+        publishState = row.regStatus === "1" ? 'success' : 'danger';
+
+        return [
+          '<div class="btn-group" role="group" aria-label="Actions">',
+            '<a class="edit btn btn-default btn-xs" href="{{ base_path }}new-attendee.html" title="Edit">',
+              '<i class="glyphicon glyphicon-pencil"></i>',
+            '</a>',
+            '<a class="edit btn btn-default btn-xs" href="{{ base_path }}view-attendee.html" title="View">',
+              '<i class="glyphicon glyphicon-eye-open"></i>',
+            '</a>',
+            '<a class="publish btn btn-default btn-xs" href="javascript:void(0)" title="Active">',
+              '<i class="glyphicon glyphicon-' + publishIcon + ' text-' + publishState + '"></i>',
+            '</a>',
+            '<a class="note btn btn-default btn-xs" href="javascript:void(0)" title="Note">',
+              '<i class="glyphicon glyphicon-book"></i>',
+            '</a>',
+          '</div>'
+        ].join('');
+      }
+
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+            {
+              label: "Registrations by month",
+              fill: false,
+              lineTension: 0.1,
+              backgroundColor: "rgba(75,192,192,0.4)",
+              borderColor: "rgba(75,192,192,1)",
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: "rgba(75,192,192,1)",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: "rgba(75,192,192,1)",
+              pointHoverBorderColor: "rgba(220,220,220,1)",
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: [65, 59, 80, 81, 56, 55, 40],
+              spanGaps: false,
+            }
+          ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+      });
+
+      (function($, window, document, undefined) {
+
+        $(".sparkline_one").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+            type: 'bar',
+            height: '40',
+            barWidth: 9,
+            colorMap: {
+            '7': '#a1a1a1'
+            },
+            barSpacing: 2,
+            barColor: '#26B99A'
+        });
+
+        $(".sparkline_two").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+            type: 'line',
+            width: '200',
+            height: '40',
+            lineColor: '#26B99A',
+            fillColor: 'rgba(223, 223, 223, 0.57)',
+            lineWidth: 2,
+            spotColor: '#26B99A',
+            minSpotColor: '#26B99A'
+        });
+
+        var options = {
+          legend: false,
+          responsive: false
+        };
+
+        new Chart(document.getElementById("canvas1"), {
+          type: 'doughnut',
+          tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+          data: {
+            labels: [
+              "Symbian",
+              "Blackberry",
+              "Other",
+              "Android",
+              "IOS"
+            ],
+            datasets: [{
+              data: [15, 20, 30, 10, 30],
+              backgroundColor: [
+                "#BDC3C7",
+                "#9B59B6",
+                "#E74C3C",
+                "#26B99A",
+                "#3498DB"
+              ],
+              hoverBackgroundColor: [
+                "#CFD4D8",
+                "#B370CF",
+                "#E95E4F",
+                "#36CAAB",
+                "#49A9EA"
+              ]
+            }]
+          },
+          options: options
+        });
+
+        var opts = {
+          lines: 12,
+          angle: 0,
+          lineWidth: 0.4,
+          pointer: {
+            length: 0.75,
+            strokeWidth: 0.042,
+            color: '#1D212A'
+          },
+          limitMax: 'false',
+          colorStart: '#1ABC9C',
+          colorStop: '#1ABC9C',
+          strokeColor: '#F0F3F3',
+          generateGradient: true
+        };
+
+        var target = document.getElementById('foo'),
+            gauge = new Gauge(target).setOptions(opts);
+
+        gauge.maxValue = 100;
+        gauge.animationSpeed = 32;
+        gauge.set(80);
+        gauge.setTextField(document.getElementById("gauge-text"));
+
+        var target = document.getElementById('foo2'),
+            gauge = new Gauge(target).setOptions(opts);
+
+        gauge.maxValue = 5000;
+        gauge.animationSpeed = 32;
+        gauge.set(4200);
+        gauge.setTextField(document.getElementById("gauge-text2"));
+
+
+        var icons = new Skycons({
+          "color": "#73879C"
+        }),
+        list = [
+          "clear-day", "clear-night", "partly-cloudy-day",
+          "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+          "fog"
+        ],
+        i;
+
+        for (i = list.length; i--;)
+          icons.set(list[i], list[i]);
+
+        icons.play();
+
+        $table = $("table");
+
+        $('#eventActive').on('click', function(){
+            $table.bootstrapTable('filterBy', {"regStatus": "1"});
+        });
+
+        $('#eventInactive').on('click', function(){
+            $table.bootstrapTable('filterBy', {"regStatus": "0"});
+        });
+
+        $('#eventAll').on('click', function(){
+            $table.bootstrapTable('filterBy', {});
+        });
+        })( jQuery, window, document );
+    </script>
+{% endblock %}

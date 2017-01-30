@@ -18,7 +18,8 @@
     "bootstrap": "*",
     "normalize.css": "*",
     "animate.css": "*",
-    "modernizr": "*"
+    "modernizr": "*",
+    "chart.js": "^2.4.0"
   },
   "devDependencies": {
     "Cortana": "~1.2.7"

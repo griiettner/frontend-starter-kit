@@ -24,7 +24,8 @@ var outputFile    = 'style.css';
 
 // LEES files to be compiled, it is an array and can be more than one
 var files         = [
-                        gconf.pathSrc + "less/style.less"
+                        gconf.pathSrc + "less/style.less",
+                        gconf.pathSrc + "less/theme.less"
                     ];
 
 // Options for autoprefixer
@@ -102,7 +103,7 @@ var cssPath       = devPath + outputFile; // Path to Unminified CSS
 * This task will generate a non minified CSS version with source maps to original
 * LESS file to make easier to debug and find properties to edit using Chrome DevTools.
 */
-gulp.task('styles-raw', ['fonts'], function() {
+gulp.task('styles-raw', function() {
     console.log('###### --- Creating Uninified Style Files in ' + cssPath +' ---');
     return gulp.src(files)
         .pipe(plugins.less(lessOpt))

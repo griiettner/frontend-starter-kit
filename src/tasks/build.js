@@ -20,12 +20,8 @@ gulp.task('build', function(callback) {
         'clean',
         'styles',
         'scripts',
-        'favicons',
-        'images',
         'views',
         'copy',
-        'humans',
-        'robots',
         callback
     );
 });

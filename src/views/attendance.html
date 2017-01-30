@@ -1,0 +1,121 @@
+{% extends template_path + "base-left-col.htm" %}
+
+{% set title = "Home" %}
+{% set menu = "event" %}
+
+{% block content %}
+        <script>var menu = "event"; </script>
+        <h2>Attendance - 2017 February 6th Larry Labelle All Team Meeting</h2>
+        <p>Meeting Attendance Report as of Tuesday January 17, 2017 10:28:55 am</p>
+        <div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#invitations" aria-controls="invitations" role="tab" data-toggle="tab">Invitations</a>
+                </li>
+                <li role="presentation">
+                    <a href="#notRegistered" aria-controls="notRegistered" role="tab" data-toggle="tab">Statistics</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="invitations">
+                    <div id="toolbar">
+                        <a href="#" id="exportExcel" class="btn btn-default">Export to Excel</a>
+                        <div class="btn-group" role="group" aria-label="display">
+                            <button type="button" id="btnAttended" class="btn btn-default">
+                                <i class="glyphicon glyphicon-ok"></i>&nbsp;&nbsp; Attended
+                            </button>
+                            <button type="button" id="btnNotAttended" class="btn btn-default">
+                                <i class="glyphicon glyphicon-remove"></i>&nbsp;&nbsp; Not Attended
+                            </button>
+                            <button type="button" id="btnAll" class="btn btn-default">
+                                <i class="glyphicon glyphicon-list"></i>&nbsp;&nbsp; All Attendance
+                            </button>
+                        </div>
+                    </div>
+
+                    <table
+                        id="tableInvitations"
+                        data-toggle="table"
+                        data-url="{{ base_path }}json/registrations.json"
+                        data-search="true"
+                        data-toolbar="#toolbar"
+                        data-striped="true"
+                        data-showToggle="true"
+                        data-clickToSelect="true"
+                        data-pagination="true"
+                        data-idField="id"
+                        data-pageList="[10, 25, 50, 100, ALL]">
+                        <thead>
+                            <tr>
+                                <th data-field="id" data-checkbox="true">#</th>
+                                <th data-field="firstname">First Name</th>
+                                <th data-field="lastname">Last Name</th>
+                                <th data-formatter="attendanceAction" data-width="110px" data-align="center">Attendance</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="notRegistered">
+                    <div id="statisticsInvitation">
+                        <canvas id="myChart" style="width: 600px; height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block scripts %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+        <script>
+            function attendanceAction(value, row, index) {
+                var publishIcon = row.attended === 1 ? 'ok' : 'remove',
+                publishState = row.attended === 1 ? 'success' : 'danger';
+
+                return [
+                    '<div class="btn-group" role="group" aria-label="Actions">',
+                        '<a class="publish btn btn-default btn-xs" href="javascript:void(0)" title="Attendance">',
+                            '<i class="glyphicon glyphicon-' + publishIcon + ' text-' + publishState + '"></i>',
+                        '</a>',
+                    '</div>'
+                ].join('');
+            }
+
+            (function($, window, document, undefined) {
+                var ctx = $("#myChart");
+                var data = {
+                    labels: [
+                        "Attended",
+                        "Not Attended"
+                    ],
+                    datasets: [{
+                        data: [365, 12],
+                        backgroundColor: [
+                            "#FF6384",
+                            "#36A2EB"
+                        ],
+                        hoverBackgroundColor: [
+                            "#FF6384",
+                            "#36A2EB"
+                        ]
+                    }]
+                };
+
+                var myChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data
+                });
+
+                $('#btnAttended').on('click', function(){
+                    $('#tableInvitations').bootstrapTable('filterBy', {"attended": 1});
+                });
+
+                $('#btnNotAttended').on('click', function(){
+                    $('#tableInvitations').bootstrapTable('filterBy', {"attended": 0});
+                });
+
+                $('#btnAll').on('click', function(){
+                    $('#tableInvitations').bootstrapTable('filterBy', {});
+                });
+            })( jQuery, window, document );
+        </script>
+{% endblock %}

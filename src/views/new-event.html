@@ -1,0 +1,247 @@
+{% extends template_path + "base-left-col.htm" %}
+
+{% set title = "Home" %}
+{% set menu = "admin" %}
+
+{% block content %}
+    <script>var menu = "events"; </script>
+    <h2>New Event</h2>
+
+    <p>Please complete the following Attendee Registration Website Request form.</p>
+    <p>Please allow 5 - 7 business days from the day that ALL information has been submitted for this request.</p>
+    <p><strong>Questions<br></strong>Email: support@meetingevolution.net<br>Phone: 877 865 6913 ext 1</p>
+    <p>Click <a href="{{ base_path }}index.php/example-general-information.html" target="_blank">HERE</a> to see an example registration site.</p>
+
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#event" aria-controls="event" role="tab" data-toggle="tab">
+          Event
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">
+          Contact
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#venue" aria-controls="venue" role="tab" data-toggle="tab">
+          Venue
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#publishing" aria-controls="publishing" role="tab" data-toggle="tab">
+          Publishing
+        </a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="event">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Event Name</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="My Nice Event Name">
+            </div>
+            <div class="form-group">
+              <label>Date</label>
+              <div id="calRange"></div>
+            </div>
+          </div>
+        </div>
+        <p><small>What is the last date a registration can be accepted?</small></p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Event Cut Off Date</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="yyyy-mm-dd" data-date="single">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Live Date</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="yyyy-mm-dd" data-date="single">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="contact">
+        <div class="row">
+          <div class="col-md-6">
+            <p><small>Please include the person in charge of the event</small></p>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Contact Name</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Contact Phone</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="000-000-0000">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Contact Email</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email@email.com">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <p><small>Please include <b>YOUR</b> contact information in case we have any questions</small></p>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Your Name</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Your Phone</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="000-000-0000">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Your Email</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email@email.com">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="venue">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Venue</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Venue Name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">City</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="City Name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Country</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Country Name Other than USA">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Street Name and number">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">State / Province</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="State or Province">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="publishing">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Id</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="0" disabled>
+            </div>
+            <div class="control-group">
+              <label id="jform_created-lbl" for="jform_created" class="">
+                Created
+              </label>
+              <p class="form-control-static">Wednesday, 16 November 2016 10:01</p>
+            </div>
+            <div class="control-group">
+              <label id="jform_created_by-lbl" for="jform_created_by" class="">
+                Created by
+              </label>
+              <p class="form-control-static">Paulo Griiettner (paulo)</p>
+            </div>
+            <div class="control-group">
+              <label id="jform_modified-lbl" for="jform_modified" class="">
+                Modified
+              </label>
+              <p class="form-control-static">Friday, 09 December 2016 17:34</p>
+            </div>
+            <div class="control-group">
+              <label id="jform_modified_by-lbl" for="jform_modified_by" class="">
+                Modified by
+              </label>
+              <p class="form-control-static">Paulo Griiettner (paulo)</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Status</label>
+              <select id="jform_published" name="jform[published]" class="form-control">
+                <option value="1" selected="selected">Published</option>
+                <option value="0">Unpublished</option>
+                <option value="2">Archived</option>
+                <option value="-2">Trashed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Category</label>
+              <select id="jform_catid" name="jform[catid]" class="form-control">
+                <option value="11" selected="selected">Anual Forum</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Access</label>
+              <select id="jform_access" name="jform[access]" class="form-control">
+                <option value="5">Guest</option>
+                <option value="1" selected="selected">Public</option>
+                <option value="6">Super Users</option>
+                <option value="2">Registered</option>
+                <option value="3">Special</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Language</label>
+              <select id="jform_language" name="jform[language]" class="form-control">
+                <option value="*">All</option>
+                <option value="en-GB" selected="selected">English (en-GB)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+{% block scripts %}
+        <script>
+          (function($, window, document, undefined) {
+
+            "use strict";
+
+            $('#exportExcel').on('click', function () {
+              $table.tableExport({
+                type:'excel'
+              });
+            });
+
+            // Datepicker for forms
+            if($('#calRange').length || $('input[data-date="single"]').length) {
+              $('#calRange').dateRangePicker({
+                inline:true,
+                container: '#calRange',
+                alwaysOpen:true,
+                selectForward: true,
+                startDate: moment(),
+                getValue: function() {
+                  if ($('#jform_start').val() && $('#jform_end').val() )
+                    return $('#jform_start').val() + ' to ' + $('#jform_end').val();
+                  else
+                    return '';
+                },
+                setValue: function(s,s1,s2) {
+                  $('#jform_start').val(s1);
+                  $('#jform_end').val(s2);
+                }
+              });
+
+              $('input[data-date="single"]').dateRangePicker({
+                autoClose: true,
+                singleDate : true,
+                showShortcuts: false,
+                singleMonth: true
+              });
+            }
+
+          })(jQuery, window, document);
+        </script>
+    {% endblock %}

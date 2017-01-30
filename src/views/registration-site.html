@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- /.website title -->
+        <title>Registration Site</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha256-j+P6EZJVrbXgwSR5Mx+eCS6FvP9Wq27MBRC/ogVriY0=" crossorigin="anonymous" />
+
+        <link href="{{ config.base_path }}css/theme.css" rel="stylesheet">
+        <!-- Google Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    </head>
+
+    <body>
+
+        <div id="topnav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#home">Company Name</a>
+                </div>
+                <div class="navbar-collapse collapse pull-right">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#feature" class="btn option">
+                                <i class="fa fa-building"></i>
+                                Housing Information
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#subscribe" class="btn option">
+                                <i class="fa fa-calendar"></i>
+                                Agenda Information
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="btn option">
+                                <i class="fa fa-plane"></i>
+                                Travel Information
+                            </a>
+                        </li>
+                        <li>
+                            <a href="registration-form.html" class="btn option">
+                                <i class="fa fa-pencil-square-o"></i>
+                                Register
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="fullscreen landing parallax text-center" style="background-image:url('images/meeting.jpg');" data-img-width="1140" data-img-height="650" data-diff="0">
+
+                <div class="overlay">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!-- /.logo -->
+                            <div class="logo wow fadeInDown"> <a href=""><img src="https://bootstrapthemes.co/demo/html/afterwork-comingsoon/center/images/logo.png" alt="logo"></a></div>
+                            <!-- /.main title -->
+                            <h1>
+                                2017 February 7th ECBOD Meeting
+                            </h1>
+
+                            <!-- /.count down timer -->
+                            <ul class="countdown">
+                                <li>
+                                    <div class="numb wow fadeInUp">
+                                        <span class="days">00</span>
+                                        <p class="days_ref">days</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="numb wow fadeInUp">
+                                        <span class="hours">00</span>
+                                        <p class="hours_ref">hours</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="numb wow fadeInUp">
+                                        <span class="minutes">00</span>
+                                        <p class="minutes_ref">minutes</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="numb wow fadeInUp">
+                                        <span class="seconds">00</span>
+                                        <p class="seconds_ref">seconds</p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <!-- /.header paragraph -->
+                            <div class="working">
+                                <p>February 7th, 2017 <br> Newport Beach, CA</p>
+                            </div>
+
+                            <!-- /.header menu -->
+                            <div class="more wow fadeInLeft">
+                                <a href="#feature" class="btn option"><i class="fa fa-building"></i>Housing Information</a>
+                                <a href="#subscribe" class="btn option"><i class="fa fa-calendar"></i>Agenda Information</a>
+                                <a href="#contact" class="btn option"><i class="fa fa-plane"></i>Travel Information</a>
+                                <a href="registration-form.html" class="btn option"><i class="fa fa-pencil-square-o"></i>Register</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.feature section -->
+        <div id="feature">
+            <div class="container">
+                <div class="row">
+                    <!-- /.apple devices image -->
+                    <div class="col-md-6 wow slideInLeft">
+                        <img src="http://www.hotel-r.net/im/hotel/us/island-hotel-newport-beach-12.jpg" alt="macbook" class="img-responsive">
+                    </div>
+
+                    <!-- /.feature list -->
+                    <div class="col-md-6 wow slideInRight">
+                        <h1>Housing Information</h1>
+                        <h2 class="highlight">Island Hotel Newport Beach</h2>
+                        <p>690 Newport Center Drive <br>
+                        Newport Beach, Ca, 92660 <br>
+                        Tel: 1.949.759.0808 <br>
+                        <a href="http://www.islandhotel.com/" target="_blank">Hotel Website</a></p>
+
+                        <h3>Hotel Payment:</h3>
+                        <p>Customers will be responsible for providing a credit card upon arrival for incidentals only.</p>
+                        <p>FedEx employees will be responsible for providing a credit card upon arrival for your sleeping room, tax, valet parking (if applicable) and incidentals.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- /.google maps -->
+        <div class="container">
+            <div id="googlemaps"></div>
+        </div>
+
+        <!-- /.subscribe section -->
+        <div id="subscribe">
+            <div class="container">
+
+                <!-- /.mail icon -->
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <i class="glyphicon glyphicon-calendar letter wow fadeInUp"></i>
+                </div>
+
+                <!-- /.subscribe form -->
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="subscribe-form wow fadeInUp">
+                        Agenda Information
+                    </h1>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="wow fadeInUp">
+                        <h4>Tuesday, February 7th, 2017</h4>
+                        <dl class="agenda">
+                            <dt>10:00am - 12:00pm</dt>
+                            <dd>Arrivals @ SNA(John Wayne Airport)</dd>
+                            <dt>10:00am - 01:30pm</dt>
+                            <dd>Registration @ Salon B Foyer</dd>
+                            <dt>12:00pm - 01:45pm</dt>
+                            <dd>Lunch @ Pool deck</dd>
+                            <dt>02:00pm - 05:15pm</dt>
+                            <dd>General Session @ Salon B</dd>
+                            <dt>05:45pm - 6:30pm</dt>
+                            <dd>Reception @ Aqua Lounge (back area)</dd>
+                            <dt>06:30pm - 09:00pm</dt>
+                            <dd>Dinner Offsite</dd>
+                        </dl>
+                        <hr>
+                        <h4>Wednesday, February 8th, 2017</h4>
+                        <dl class="agenda">
+                            <dt>07:00am - 08:00am</dt>
+                            <dd>Breakfast Venues
+                                <ol>
+                                    <li>Salon C</li>
+                                    <li>Salon D</li>
+                                </ol>
+                            </dd>
+                            <dt>08:00am - 04:15pm</dt>
+                            <dd>General Session @ Salon B</dd>
+                            <dt>11:45pm - 1:15pm</dt>
+                            <dd>Lunch @ Pool Deck</dd>
+                            <dt>05:30pm</dt>
+                            <dd>Dinner Offsite</dd>
+                        </dl>
+                        <hr>
+                        <h4>Thursday, February 9th, 2017</h4>
+                        <dl class="agenda">
+                            <dt>06:00am</dt>
+                            <dd>Airport Departures & Breakfast to Go  @ Hotel Lobby</dd>
+                        </dl>
+                    </div>
+
+                    <!-- /.download button -->
+                    <div class="download-section text-center wow fadeInUp">
+                        <a href="registration-form.html" class="btn download"><i class="glyphicon glyphicon-pencil"></i> Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.contact section -->
+        <div id="contact">
+
+            <div class="container">
+                <div class="row contact-row">
+
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="subscribe-form wow fadeInUp">
+                            Travel Information
+                        </h1>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <h3>Registration Due: December 23rd </h3>
+                        <p>FedEx Global Travel will book your airline ticket from the information you provide in Registration. Your flight itinerary/confirmation will be emailed to you within 5 business days of you registering.</p>
+                        <p>For domestic travel be sure to travel with your driver's license or passport. The name on your airline ticket must match the ID you present.</p>
+                        <h3>Preferred Flight Information:</h3>
+                        <p>You may provide any preferred flight information in the Additional Air Travel Comments block. We ask that all attendees <span class="highlight">arrive no later than 12:00pm CST on Tuesday,&nbsp;Febrauary 7th if you are flying into SNA Airport</span> and <span class="highlight">depart no earlier than 6:00pm CST on Wednesday,&nbsp;February 8th</span> if you are not planning to attend the offsite event planned for this evening.</p>
+
+                        <h4>Global Travel:</h4>
+                        <p>Please direct any questions regarding your air travel to Eric Miller<br>
+                        Email address – emiller@fedex.com<br>
+                        Phone number – 1.901.434.4738 work or 1.901.496.4223 cell</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- /.twitter section -->
+        <div class="last-tweet fullscreen parallax" style="background-image:url('https://bootstrapthemes.co/demo/html/afterwork-comingsoon/center/images/picjumbo.com_IMG_6533.jpg');" data-img-width="2000" data-img-height="1333" data-diff="100">
+            <div class="overlay">
+                <div class="container">
+                    <!-- /.download button -->
+                    <div class="download-section col-twit text-center wow fadeInRight">
+                        <a href="registration-form.html" class="btn download"><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp; Click Here to Register</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- /.footer -->
+        <footer id="footer">
+            <div class="container">
+                <div class="text-center">
+                    <a href="#top"><i class="fa fa-arrow-up scroll-top text-center"></i></a>
+                    </br>
+                    Copyright Company Name 2017 | By <a href="http://meetingevolution.net/" target="_blank">Meeting Evolution</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- /.javascript files -->
+        <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.downCount/1.0.0/jquery.downCount.min.js" integrity="sha256-XoDdvIIW2lktjQtzYUGA8jGjdANvnB0cVyr7K3NYPx8=" crossorigin="anonymous"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqJ08ftKoeJo_IuXwTlRozICJNtNczM-M"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.0.1/wow.min.js" integrity="sha256-cEriVati31SBiE6w22m1UsaG5wlLIVgbHLyGqbbDgAs=" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            // The latitude and longitude of your business / place
+            var position = [33.620007, -117.875241];
+
+            function showGoogleMaps() {
+
+              var latLng = new google.maps.LatLng(position[0], position[1]);
+
+              var mapOptions = {
+                zoom: 16,
+                // initialize zoom level - the max value is 21
+                scrollwheel: false,
+                streetViewControl: false,
+                // hide the yellow Street View pegman
+                scaleControl: true,
+                // allow users to zoom the Google Map
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: latLng
+              };
+
+              map = new google.maps.Map(document.getElementById('googlemaps'), mapOptions);
+
+              // Show the default red marker at the location
+              marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                draggable: false,
+                animation: google.maps.Animation.DROP
+              });
+            }
+
+            google.maps.event.addDomListener(window, 'load', showGoogleMaps);
+
+            jQuery(document).ready(function($) {
+
+            /* countdown */
+            $('.countdown').downCount({
+                date: '10/10/2017 12:00:00',
+                //Chnage the time from here
+                offset: +10
+            });
+
+            /* parallax background image http://www.minimit.com/articles/lets-animate/parallax-backgrounds-with-centered-content
+             /* detect touch */
+            if ("ontouchstart" in window) {
+                document.documentElement.className = document.documentElement.className + " touch";
+            }
+            if (!$("html").hasClass("touch")) { /* background fix */
+                $(".parallax").css("background-attachment", "fixed");
+            }
+
+            /* fix vertical when not overflow
+            call fullscreenFix() if .fullscreen content changes */
+
+            function fullscreenFix() {
+                var h = $('body').height();
+                // set .fullscreen height
+                $(".content-b").each(function(i) {
+                    if ($(this).innerHeight() <= h) {
+                        $(this).closest(".fullscreen").addClass("not-overflow");
+                    }
+                });
+            }
+            $(window).resize(fullscreenFix);
+            fullscreenFix();
+
+            /* resize background images */
+
+            function backgroundResize() {
+                var windowH = $(window).height();
+                $(".landing, .last-tweet").each(function(i) {
+                    var path = $(this);
+                    // variables
+                    var contW = path.width();
+                    var contH = path.height();
+                    var imgW = path.attr("data-img-width");
+                    var imgH = path.attr("data-img-height");
+                    var ratio = imgW / imgH;
+                    // overflowing difference
+                    var diff = parseFloat(path.attr("data-diff"));
+                    diff = diff ? diff : 0;
+                    // remaining height to have fullscreen image only on parallax
+                    var remainingH = 0;
+                    if (path.hasClass("parallax") && !$("html").hasClass("touch")) {
+                        var maxH = contH > windowH ? contH : windowH;
+                        remainingH = windowH - contH;
+                    }
+                    // set img values depending on cont
+                    imgH = contH + remainingH + diff;
+                    imgW = imgH * ratio;
+                    // fix when too large
+                    if (contW > imgW) {
+                        imgW = contW;
+                        imgH = imgW / ratio;
+                    }
+                    //
+                    path.data("resized-imgW", imgW);
+                    path.data("resized-imgH", imgH);
+                    path.css("background-size", imgW + "px " + imgH + "px");
+                });
+            }
+            $(window).resize(backgroundResize);
+            $(window).focus(backgroundResize);
+            backgroundResize();
+
+            /* set parallax background-position */
+
+            function parallaxPosition(e) {
+                var heightWindow = $(window).height();
+                var topWindow = $(window).scrollTop();
+                var bottomWindow = topWindow + heightWindow;
+                var currentWindow = (topWindow + bottomWindow) / 2;
+                $(".parallax").each(function(i) {
+                    var path = $(this);
+                    var height = path.height();
+                    var top = path.offset().top;
+                    var bottom = top + height;
+                    // only when in range
+                    if (bottomWindow > top && topWindow < bottom) {
+                        var imgW = path.data("resized-imgW");
+                        var imgH = path.data("resized-imgH");
+                        // min when image touch top of window
+                        var min = 0;
+                        // max when image touch bottom of window
+                        var max = -imgH + heightWindow;
+                        // overflow changes parallax
+                        var overflowH = height < heightWindow ? imgH - height : imgH - heightWindow; // fix height on overflow
+                        top = top - overflowH;
+                        bottom = bottom + overflowH;
+                        // value with linear interpolation
+                        var value = min + (max - min) * (currentWindow - top) / (bottom - top);
+                        // set background-position
+                        var orizontalPosition = path.attr("data-oriz-pos");
+                        orizontalPosition = orizontalPosition ? orizontalPosition : "50%";
+                        $(this).css("background-position", orizontalPosition + " " + value + "px");
+                    }
+                });
+            }
+            if (!$("html").hasClass("touch")) {
+                $(window).resize(parallaxPosition);
+                //$(window).focus(parallaxPosition);
+                $(window).scroll(parallaxPosition);
+                parallaxPosition();
+            }
+
+            new WOW().init();
+
+            $(window).scroll(function(){
+                if ($(this).scrollTop() > 642) {
+                    $('#topnav').fadeIn(500);
+                } else {
+                    $('#topnav').fadeOut(500);
+                }
+            });
+        });
+        </script>
+
+    </body>
+</html>
